@@ -1,0 +1,1 @@
+Basic TODO Full Stack application with the stack HTMX, Go and MySQL. 
