@@ -1,9 +1,16 @@
 {{define "todoList"}}
 <ul class="list-group">
   {{range .}}
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      {{ .Description }}
-			<span class="badge text-bg-primary rounded-pill">{{ .Id }}</span> <!-- Change for Icon -->
+    <li class="list-group-item d-flex justify-content-between align-items-center text-left">
+      <span {{if .Done}} style="text-decoration: line-through;" {{end}}>{{ .Description }}</span>
+      <div>
+        <a href="#" hx-get="/taskUpdateForm/{{.Id}}" hx-target="#taskForm" class="mx-2 text-decoration-none">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+        <a href="#" hx-delete="/tasks/{{.Id}}" hx-target="#taskList" hx-confirm='Delete task "{{.Description}}"?' class="text-danger mx-2 text-decoration-none">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+      </div>
     </li>
   {{end}}
 </ul>

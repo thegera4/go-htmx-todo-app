@@ -1,0 +1,27 @@
+{{define "updateTaskForm"}}
+<form>
+	<!-- Input to enter Task/Todo description -->
+  <div class="mb-3">
+    <input 
+			type="text" 
+			class="form-control text-primary-emphasis" 
+			id="taskInput" 
+			name="task" 
+      value="{{.Description}}"
+			placeholder="Enter a task description to add a new todo."
+			required
+		>
+  </div>
+	<!-- Checkbox to mark Task/Todo as done -->
+	<div class="mb-3 form-check text-left">
+    <input type="checkbox" class="form-check-input" id="doneCheckbox" name="done" {{if .Done}} checked {{end}}>
+    <label class="form-check-label text-left" for="doneCheckbox">Task Completed?</label>
+  </div>
+	<!-- Button to update Task/Todo -->
+  <div>
+  	<button class="btn btn-warning" hx-put="/tasks/{{.Id}}" hx-target="#taskList">
+			Update Task
+		</button>
+  </div>
+</form>
+{{end}}

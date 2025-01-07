@@ -9,6 +9,9 @@
 			placeholder="Enter a task description to add a new todo."
 		>
   </div>
-  <button type="submit" class="btn btn-primary">Add Task</button>
+  <div>
+		<button hx-get="/newTaskForm" hx-target="#taskForm" class="btn btn-success">Add New Item</button>
+  	<button type="submit" class="btn btn-primary" hx-post="/tasks" hx-target="#taskList">Add Task</button>
+	</div>
 </form>
 {{end}}
